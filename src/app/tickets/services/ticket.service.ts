@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { delay, first, tap } from 'rxjs';
 import { Tickets } from '../model/tickets';
 
 @Injectable({
@@ -11,6 +12,11 @@ export class TicketService {
   constructor(private httpClient: HttpClient) { }
 
   getTickets() {
-    return this.httpClient.get<Tickets[]>(this.API);
+    return this.httpClient.get<Tickets[]>(this.API).pipe(
+      tap(tickets => console.log(tickets)),
+      // se inscreve no observable e assim que receber a primeira resposta se desinscreve do oservable
+      first(),
+      delay(2000)
+    );
   }
 }
