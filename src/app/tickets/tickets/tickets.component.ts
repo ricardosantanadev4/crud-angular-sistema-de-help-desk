@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { Observable, tap, catchError, of } from 'rxjs';
 import { Tickets } from '../model/tickets';
 import { TicketService } from '../services/ticket.service';
 
@@ -14,6 +14,12 @@ export class TicketsComponent {
   displayedColumns = ['status', 'id', 'assunto', 'categoria', 'tecnico', 'nivel', 'solicitante', 'criacao', 'urgencia', 'vencimento']
 
   constructor(private ticketService: TicketService) {
-    this.dataSource$ = ticketService.getTickets()
+    this.dataSource$ = ticketService.getTickets().pipe(
+      catchError(
+        error => {
+          return of([])
+        }
+      )
+    )
   }
 }
