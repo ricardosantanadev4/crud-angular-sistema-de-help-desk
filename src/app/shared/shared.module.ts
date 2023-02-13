@@ -13,5 +13,9 @@ import { AppMaterialModule } from './app-material/app-material.module';
     CommonModule,
     AppMaterialModule
   ]
+  ,
+  exports: [
+    ErrorDialogComponent
+  ]
 })
 export class SharedModule { }
