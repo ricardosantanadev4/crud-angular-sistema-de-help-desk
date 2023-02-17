@@ -13,7 +13,7 @@ import { TicketService } from '../services/ticket.service';
 export class TicketsComponent {
   // dataSource$: Tickets[] = [{ status: 'Aberto', id: '1', assunto: 'Softphone - Instalar,Configuração', categoria: 'Dispositivo', tecnico: 'Suporte Técnico - 01', nivel: 'Nível 1', solicitante: 'helpdesk@rsds.com.br', criacao: '07/02/2023', urgencia: 'Baixa', vencimento: '10/02/2023 10:20' }];
   dataSource$: Observable<Tickets[]>;
-  displayedColumns = ['status', 'id', 'assunto', 'categoria', 'tecnico', 'nivel', 'solicitante', 'criacao', 'urgencia', 'vencimento']
+  displayedColumns = ['flag', 'status', 'id', 'assunto', 'categoria', 'tecnico', 'nivel', 'solicitante', 'criacao', 'urgencia', 'vencimento']
 
   constructor(private ticketService: TicketService, public dialog: MatDialog) {
     this.dataSource$ = ticketService.getTickets().pipe(
