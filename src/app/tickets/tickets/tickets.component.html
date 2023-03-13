@@ -91,6 +91,23 @@
                     <td mat-cell *matCellDef="let element"> {{element.vencimento}} </td>
                 </ng-container>
 
+                <!-- actions Column -->
+                <ng-container matColumnDef="actions">
+                    <mat-header-cell *matHeaderCellDef>
+                        <button mat-mini-fab color="primary" aria-label="Adicionar tickets" (click)="onAdd()">
+                            <mat-icon>add</mat-icon>
+                        </button>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                        <button mat-icon-button color="primary" aria-label="Editar tickets">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-icon-button color="warn" aria-label="Deletar tickets">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </mat-cell>
+                </ng-container>
+
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
