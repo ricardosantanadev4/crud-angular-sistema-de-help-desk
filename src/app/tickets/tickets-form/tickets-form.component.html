@@ -1,1 +1,6 @@
-<p>tickets-form works!</p>
+<form [formGroup]="form">
+    <mat-form-field>
+        <mat-label>Status</mat-label>
+        <input matInput formControlName="status">
+    </mat-form-field>
+</form>
