@@ -1,6 +1,9 @@
 <mat-card>
     <mat-card-content>
-        <form [formGroup]="form">
+        <mat-toolbar color="primary">
+            <span> SOLICITAÇÃO RÁPIDA: </span>
+        </mat-toolbar>
+        <form [formGroup]="form" class="min-whidth">
             <mat-form-field>
                 <mat-label> SELECIONE O SERVIÇO DESEJADO ABAIXO: </mat-label>
                 <!-- <input matInput formControlName="assunto"> -->
@@ -49,4 +52,5 @@
         <button mat-raised-button color="primary" (click)="onSubmit()">SALVAR</button>
         <button mat-raised-button (click)="onCancel()" class="button-cancel">FECHAR</button>
     </mat-card-actions>
+
 </mat-card>
