@@ -1,6 +1,52 @@
-<form [formGroup]="form">
-    <mat-form-field>
-        <mat-label>Status</mat-label>
-        <input matInput formControlName="status">
-    </mat-form-field>
-</form>
+<mat-card>
+    <mat-card-content>
+        <form [formGroup]="form">
+            <mat-form-field>
+                <mat-label> SELECIONE O SERVIÇO DESEJADO ABAIXO: </mat-label>
+                <!-- <input matInput formControlName="assunto"> -->
+                <mat-select formControlName="assunto">
+                    <mat-option value="ATA">ATA (Adaptador) - Instalar, Configuração
+                    </mat-option>
+                    <mat-option value="Central Telefonica">Central Telefônica - Implantação</mat-option>
+                    <mat-option value="Equipamento">Equipamaento (Outros) - Instalar,
+                        Configuração</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label> CLASSES DE SERVIÇOS: </mat-label>
+                <!-- <input matInput formControlName="assunto"> -->
+                <mat-select formControlName="categoria">
+                    <mat-option value="Dispositivo"> Dispositivo </mat-option>
+                    <mat-option value=" Recurso "> Recurso </mat-option>
+                    <mat-option value=" Uso "> Uso </mat-option>
+                    <mat-option value=" Cadastro "> Cadastro </mat-option>
+                    <mat-option value=" Serviços "> Serviços </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label> Técnico responsável: </mat-label>
+                <!-- <input matInput formControlName="assunto"> -->
+                <mat-select formControlName="tecnico">
+                    <mat-option value="Suporte técnico - 01"> Suporte técnico - 01 </mat-option>
+                    <mat-option value="Suporte técnico - 02"> Suporte técnico - 02 </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label> Solicitante: </mat-label>
+                <!-- <input matInput formControlName="assunto"> -->
+                <mat-select formControlName="solicitante">
+                    <mat-option value="helpdesck@rsds.com.br"> helpdesck@rsds.com.br </mat-option>
+                    <mat-option value="cliente1@rsds.com.br"> cliente1@rsds.com.br </mat-option>
+                    <mat-option value="cliente2@rsds.com.br"> cliente2@rsds.com.br </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </form>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="onSubmit()">SALVAR</button>
+        <button mat-raised-button (click)="onCancel()" class="button-cancel">FECHAR</button>
+    </mat-card-actions>
+</mat-card>

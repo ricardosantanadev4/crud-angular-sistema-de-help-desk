@@ -1,0 +1,22 @@
+// largura do card
+mat-card {
+    width: 80%;
+    margin: 2em auto;
+    text-align: center;
+}
+
+// largura dos inputs
+mat-form-field {
+    width: 100%;
+}
+
+// butoes
+mat-card-actions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-cancel{
+    margin-left: 20px;
+}
