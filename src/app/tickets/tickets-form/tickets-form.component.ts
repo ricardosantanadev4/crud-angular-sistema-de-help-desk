@@ -30,7 +30,7 @@ export class TicketsFormComponent {
     // console.log(this.form.value);
     //  necessario se increver no observable para poder funcionar .subscribe()
     this.ticketsService.save(this.form.value).subscribe({
-      next: result => console.log({ message: result }), error: error => {
+      next: result => { this.onSucess() }, error: error => {
         this.onError();
       }
     });
@@ -38,6 +38,10 @@ export class TicketsFormComponent {
 
   onCancel() {
     console.log('onCancel');
+  }
+
+  onSucess() {
+    this._snackBar.open('Ticket salvo com sucesso', '', { duration: 2000 });
   }
 
   onError() {
