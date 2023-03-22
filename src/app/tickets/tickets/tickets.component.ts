@@ -36,5 +36,4 @@ export class TicketsComponent {
     console.log('onAdd'),
       this.router.navigate(['tickets/new'])
   }
-
 }
