@@ -23,8 +23,7 @@ export class TicketService {
   }
 
   save(record: Tickets) {
-    //  necessario se increver no observable para poder funcionar .subscribe()
-    return this.httpClient.post<Tickets>(this.API, record).subscribe(data => console.log(data));
+    return this.httpClient.post<Tickets>(this.API, record);
   }
 
 }

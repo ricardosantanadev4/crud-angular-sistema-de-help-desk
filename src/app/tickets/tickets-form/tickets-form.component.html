@@ -5,13 +5,14 @@
         </mat-toolbar>
         <form [formGroup]="form" class="min-whidth">
             <mat-form-field>
-                <mat-label> SELECIONE O SERVIÇO DESEJADO ABAIXO: </mat-label>
+                <mat-label> SELECIONE O SERVIÇO DESEJADO AO LADO: </mat-label>
                 <!-- <input matInput formControlName="assunto"> -->
                 <mat-select formControlName="assunto">
-                    <mat-option value="ATA">ATA (Adaptador) - Instalar, Configuração
+                    <mat-option value="ATA (Adaptador) - Instalar">ATA (Adaptador) - Instalar, Configuração
                     </mat-option>
-                    <mat-option value="Central Telefonica">Central Telefônica - Implantação</mat-option>
-                    <mat-option value="Equipamento">Equipamaento (Outros) - Instalar,
+                    <mat-option value="Central Telefônica - Implantação">Central Telefônica - Implantação</mat-option>
+                    <mat-option value="Equipamaento (Outros) - Instalar,
+                    Configuração">Equipamaento (Outros) - Instalar,
                         Configuração</mat-option>
                 </mat-select>
             </mat-form-field>
@@ -52,5 +53,4 @@
         <button mat-raised-button color="primary" (click)="onSubmit()">SALVAR</button>
         <button mat-raised-button (click)="onCancel()" class="button-cancel">FECHAR</button>
     </mat-card-actions>
-
 </mat-card>
