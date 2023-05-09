@@ -3,7 +3,8 @@
         <mat-toolbar color="primary">
             <span>Solicitações</span>
         </mat-toolbar>
-        <app-tickets-list *ngIf="dataSource$ | async as tickets; else elseBlock" [ticketsList]="tickets" (onAddList)="onAdd()"></app-tickets-list>
+        <app-tickets-list *ngIf="dataSource$ | async as tickets; else elseBlock" 
+        [ticketsList]="tickets" (eventTicketList)="onAddTickets()"></app-tickets-list>
         <ng-template #elseBlock>
             <div class="loadingSpinner">
                 <mat-spinner></mat-spinner>

@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, NonNullableFormBuilder } from '@angular/forms';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { TicketService } from '../services/ticket.service';
 
@@ -10,31 +10,33 @@ import { TicketService } from '../services/ticket.service';
   styleUrls: ['./tickets-form.component.scss']
 })
 export class TicketsFormComponent {
-  form: FormGroup;
+  ticketsForm = this.formBuilder.group({
+    // status: ['ABERTO'],
+    // id: string;
+    assunto: [''],
+    categoria: [''],
+    tecnico: [''],
+    // nivel: [''],
+    solicitante: [''],
+    // criacao: [''],
+    // urgencia: [''],
+    // vencimento: [''],
+  });
+
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
-  constructor(private formBuild: FormBuilder, private ticketsService: TicketService
+  constructor(private formBuilder: NonNullableFormBuilder, private ticketsService: TicketService
     , private _snackBar: MatSnackBar, private location: Location) {
-    this.form = formBuild.group({
-      // status: ['ABERTO'],
-      // id: string;
-      assunto: [null],
-      categoria: [null],
-      tecnico: [null],
-      // nivel: [null],
-      solicitante: [null],
-      // criacao: [null],
-      // urgencia: [null],
-      // vencimento: [null],
-    });
+
   }
 
   onSubmit() {
     // console.log(this.form.value);
     //  necessario se increver no observable para poder funcionar .subscribe()
-    this.ticketsService.save(this.form.value).subscribe({
-      next: result => { this.onSucess('Ticket salvo com sucesso') }, error: error => { this.onError('Erro ao salvar ticket') }
+    this.ticketsService.save(this.ticketsForm.value).subscribe({
+      next: () => { this.onSucess('Ticket salvo com sucesso') },
+      error: () => { this.onError('Erro ao salvar ticket') }
     });
   }
 

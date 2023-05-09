@@ -34,8 +34,8 @@ export class TicketsComponent {
     });
   }
 
-  onAdd() {
-    console.log('onAdd'),
+  onAddTickets() {
+    console.log('onAddTickets'),
       this.router.navigate(['new'], { relativeTo: this.route })
   }
 }

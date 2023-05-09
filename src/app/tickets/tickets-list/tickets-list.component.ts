@@ -9,14 +9,14 @@ import { Tickets } from '../model/tickets';
 })
 export class TicketsListComponent {
   @Input() ticketsList: Tickets[] = [];
-  @Output() eventList = new EventEmitter(false);
+  @Output() eventTicketList = new EventEmitter(false);
 
   readonly displayedColumns = ['flag', 'status', 'id', 'assunto', 'categoria', 'tecnico', 'nivel', 'solicitante', 'criacao', 'urgencia', 'vencimento', 'actions'];
 
   constructor() { }
 
-  onAddList() {
-    console.log('onAddList');
-    this.eventList.emit(true);
+  onAddTicketList() {
+    console.log('onAddTicketList');
+    this.eventTicketList.emit(true);
   }
 }

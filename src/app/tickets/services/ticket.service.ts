@@ -22,7 +22,7 @@ export class TicketService {
     );
   }
 
-  save(record: Tickets) {
+  save(record: Partial<Tickets>) {
     return this.httpClient.post<Tickets>(this.API, record);
   }
 
