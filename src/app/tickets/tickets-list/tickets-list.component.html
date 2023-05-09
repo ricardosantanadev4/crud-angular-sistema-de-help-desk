@@ -1,10 +1,4 @@
- <!--  dataSource$ verifica se a variavel foi inicializada, mais nao verifica se esta retornando dados -->
-        <!-- | async passa todo o gerenciamento para o angular, se inscreve no observable e verifica se esta retornando dados com isso e possivel execuar as condicoes do ngIF -->
-        <!-- | async as tickets evita de ficar inscrito mais de uma vez no observable para buscar o mesmo dado evitando desperdicio de memoria -->
 <mat-table [dataSource]="ticketsList" class="mat-elevation-z8">
-
-    <!--- Note that these columns can be defined in any order.
-      The actual rendered columns are set as a property on the row definition" -->
 
     <!-- Flag Column -->
     <ng-container matColumnDef="flag">
@@ -13,13 +7,11 @@
         </mat-header-cell>
         <mat-cell *matCellDef="let element">
             <div *ngIf="element.status == 'Aberto'; else elseBlock">
-                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="flag"
-                    style="color: green;">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="flag" style="color: green;">
                 </mat-icon>
             </div>
             <ng-template #elseBlock>
-                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="flag"
-                    style="color: red;">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="flag" style="color: red;">
                 </mat-icon>
             </ng-template>
         </mat-cell>
