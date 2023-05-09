@@ -1,0 +1,107 @@
+ <!--  dataSource$ verifica se a variavel foi inicializada, mais nao verifica se esta retornando dados -->
+        <!-- | async passa todo o gerenciamento para o angular, se inscreve no observable e verifica se esta retornando dados com isso e possivel execuar as condicoes do ngIF -->
+        <!-- | async as tickets evita de ficar inscrito mais de uma vez no observable para buscar o mesmo dado evitando desperdicio de memoria -->
+<mat-table [dataSource]="ticketsList" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+      The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Flag Column -->
+    <ng-container matColumnDef="flag">
+        <mat-header-cell *matHeaderCellDef>
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="flag"></mat-icon>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+            <div *ngIf="element.status == 'Aberto'; else elseBlock">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="flag"
+                    style="color: green;">
+                </mat-icon>
+            </div>
+            <ng-template #elseBlock>
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="flag"
+                    style="color: red;">
+                </mat-icon>
+            </ng-template>
+        </mat-cell>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+    </ng-container>
+
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+        <mat-header-cell mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    </ng-container>
+
+    <!-- Assunto Column -->
+    <ng-container matColumnDef="assunto">
+        <mat-header-cell *matHeaderCellDef> Assunto </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.assunto}} </mat-cell>
+    </ng-container>
+
+    <!-- Categoria Column -->
+    <ng-container matColumnDef="categoria">
+        <mat-header-cell *matHeaderCellDef> Categoria </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.categoria}} </mat-cell>
+    </ng-container>
+
+    <!-- Tecnico Column -->
+    <ng-container matColumnDef="tecnico">
+        <mat-header-cell *matHeaderCellDef> Tecnico </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.tecnico}} </mat-cell>
+    </ng-container>
+
+    <!-- Nivel Column -->
+    <ng-container matColumnDef="nivel">
+        <mat-header-cell *matHeaderCellDef> Nível </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.nivel}} </mat-cell>
+    </ng-container>
+
+    <!-- Solicitante Column -->
+    <ng-container matColumnDef="solicitante">
+        <mat-header-cell *matHeaderCellDef> Solicitante </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.solicitante}} </mat-cell>
+    </ng-container>
+
+    <!-- Criacao Column -->
+    <ng-container matColumnDef="criacao">
+        <mat-header-cell *matHeaderCellDef> Criação </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.criacao}} </mat-cell>
+    </ng-container>
+
+    <!-- Urgencia Column -->
+    <ng-container matColumnDef="urgencia">
+        <mat-header-cell *matHeaderCellDef> Urgência </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.urgencia}} </mat-cell>
+    </ng-container>
+
+    <!-- Vencimento Column -->
+    <ng-container matColumnDef="vencimento">
+        <mat-header-cell *matHeaderCellDef> Vencimento </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.vencimento}} </mat-cell>
+    </ng-container>
+
+    <!-- actions Column -->
+    <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>
+            <button mat-mini-fab color="primary" aria-label="Adicionar tickets" (click)="onAddList()">
+                <mat-icon>add</mat-icon>
+            </button>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+            <button mat-icon-button color="primary" aria-label="Editar tickets">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" aria-label="Deletar tickets">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

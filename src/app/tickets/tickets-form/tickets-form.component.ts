@@ -1,7 +1,7 @@
 import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { TicketService } from '../services/ticket.service';
 
 @Component({
@@ -11,6 +11,8 @@ import { TicketService } from '../services/ticket.service';
 })
 export class TicketsFormComponent {
   form: FormGroup;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'right';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
 
   constructor(private formBuild: FormBuilder, private ticketsService: TicketService
     , private _snackBar: MatSnackBar, private location: Location) {
@@ -32,7 +34,7 @@ export class TicketsFormComponent {
     // console.log(this.form.value);
     //  necessario se increver no observable para poder funcionar .subscribe()
     this.ticketsService.save(this.form.value).subscribe({
-      next: result => { this.onSucess() }, error: error => { this.onError() }
+      next: result => { this.onSucess('Ticket salvo com sucesso') }, error: error => { this.onError('Erro ao salvar ticket') }
     });
   }
 
@@ -41,13 +43,21 @@ export class TicketsFormComponent {
     this.location.back();
   }
 
-  onSucess() {
-    this._snackBar.open('Ticket salvo com sucesso', '', { duration: 2000 });
+  onSucess(message: string) {
+    this.snackBarPosition(message);
     this.onCancel();
   }
 
-  onError() {
-    this._snackBar.open('Erro ao salvar ticket', '', { duration: 2000 });
+  onError(message: string) {
+    this.snackBarPosition(message);
+  }
+
+  snackBarPosition(message: string) {
+    this._snackBar.open(message, '', {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+      duration: 2000
+    });
   }
 
   onBack() {

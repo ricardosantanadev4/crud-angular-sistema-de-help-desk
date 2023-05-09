@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, tap, catchError, of } from 'rxjs';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 import { Tickets } from '../model/tickets';
@@ -14,9 +14,10 @@ import { TicketService } from '../services/ticket.service';
 export class TicketsComponent {
   // dataSource$: Tickets[] = [{ status: 'Aberto', id: '1', assunto: 'Softphone - Instalar,Configuração', categoria: 'Dispositivo', tecnico: 'Suporte Técnico - 01', nivel: 'Nível 1', solicitante: 'helpdesk@rsds.com.br', criacao: '07/02/2023', urgencia: 'Baixa', vencimento: '10/02/2023 10:20' }];
   dataSource$: Observable<Tickets[]>;
-  displayedColumns = ['flag', 'status', 'id', 'assunto', 'categoria', 'tecnico', 'nivel', 'solicitante', 'criacao', 'urgencia', 'vencimento', 'actions']
 
-  constructor(private ticketService: TicketService, public dialog: MatDialog, private router: Router) {
+  constructor(private ticketService: TicketService, public dialog: MatDialog, private router: Router
+    , private route: ActivatedRoute) {
+
     this.dataSource$ = ticketService.getTickets().pipe(
       catchError(
         error => {
@@ -25,6 +26,7 @@ export class TicketsComponent {
         }
       )
     )
+
   }
   openDialog(errorMsg: string) {
     this.dialog.open(ErrorDialogComponent, {
@@ -34,6 +36,6 @@ export class TicketsComponent {
 
   onAdd() {
     console.log('onAdd'),
-      this.router.navigate(['tickets/new'])
+      this.router.navigate(['new'], { relativeTo: this.route })
   }
 }
